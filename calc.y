@@ -30,12 +30,12 @@ input:		/* empty */
 		| exp	{ cout << "Result: " << $1 << endl; }
 		;
 
-exp:    PATH SPACE EQ SPACE VALUE	  { $$ = 0; cout << *$1 << *$2 << *$3 << *$4 << *$5;}
-		| PATH SPACE NEQ SPACE VALUE  { $$ = 1; cout << *$1 << *$2 << *$3 << *$4 << *$5;}
-		| PATH SPACE G SPACE VALUE	  { $$ = 2; cout << *$1 << *$2 << *$3 << *$4 << *$5;}
-        | PATH SPACE L SPACE VALUE	  { $$ = 3; cout << *$1 << *$2 << *$3 << *$4 << *$5;}
-        | exp SPACE AND SPACE exp	  { $$ = 4; cout << $1 << *$2 << *$3 << *$4 << $5;}
-        | exp SPACE OR SPACE exp	  { $$ = 5; cout << $1 << *$2 << *$3 << *$4 << $5;}
+exp:    PATH SPACE EQ SPACE VALUE	  { $$ = 0; cout << *$1 << *$2 << *$3 << *$4 << *$5; delete $1, $2, $3, $4, $5;}
+		| PATH SPACE NEQ SPACE VALUE  { $$ = 1; cout << *$1 << *$2 << *$3 << *$4 << *$5; delete $1, $2, $3, $4, $5;}
+		| PATH SPACE G SPACE VALUE	  { $$ = 2; cout << *$1 << *$2 << *$3 << *$4 << *$5; delete $1, $2, $3, $4, $5;}
+        | PATH SPACE L SPACE VALUE	  { $$ = 3; cout << *$1 << *$2 << *$3 << *$4 << *$5; delete $1, $2, $3, $4, $5;}
+        | exp SPACE AND SPACE exp	  { $$ = 4; cout << $1 << *$2 << *$3 << *$4 << $5; delete $2, $3, $4;}
+        | exp SPACE OR SPACE exp	  { $$ = 5; cout << $1 << *$2 << *$3 << *$4 << $5; delete $2, $3, $4;}
 		;
 
 %%
