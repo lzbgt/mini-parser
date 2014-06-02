@@ -1,5 +1,5 @@
-/* Mini Calculator */
-/* calc.y */
+/* Mini Parser */
+/* parser.y */
 
 %{
 #include "heading.h"
