@@ -20,7 +20,7 @@ value       (\"[- @\%\#\.\[\]\{\}\\\+\|\/\*\?\(\)a-zA-Z0-9\_]*\")
 ">"		    { yylval.op_val = new std::string(yytext); return G; }
 "<"		    { yylval.op_val = new std::string(yytext); return L; }
 "and"		{ yylval.op_val = new std::string(yytext); return AND; }
-"or "		{ yylval.op_val = new std::string(yytext); return OR; }
+"or"		{ yylval.op_val = new std::string(yytext); return OR; }
 
 [ \t]+		{ yylval.value = new std::string(" "); return SPACE;}
 [\n]		{ yylineno++;	}
