@@ -11,8 +11,8 @@ path        \.{0,2}[-a-zA-Z0-9\_]+(\.{1,2}[-a-zA-Z0-9_]+)*
 value       (\"[- @\%\#\.\[\]\{\}\\\+\|\/\*\?\(\)a-zA-Z0-9\_]*\")
 %%
 
-{path}	    { yylval.path = yytext; return PATH; }
-{value}	    { yylval.value = yytext; return VALUE; }
+{path}	    { yylval.path = new std::string(yytext); return PATH; }
+{value}	    { yylval.value = new std::string(yytext); return VALUE; }
 "!="		{ yylval.op_val = new std::string(yytext); return NEQ; }
 "=="		{ yylval.op_val = new std::string(yytext); return EQ; }
 ">="		{ yylval.op_val = new std::string(yytext); return NL; }
