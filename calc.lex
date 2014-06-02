@@ -5,7 +5,6 @@
 #include "heading.h"
 #include "tok.h"
 int yyerror(char *s);
-//int yylineno = 1;
 %}
 
 digit		[0-9]
