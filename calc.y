@@ -26,7 +26,8 @@ input:		/* empty */
 		| exp	{ cout << "Result: " << $1 << endl; }
 		;
 
-exp:	PATH EQ VALUE	{ printf("%s eq %s \n", $1,$2);}
+exp:	PATH            { printf("%s \n", $1);}
+        |PATH EQ VALUE	{ printf("%s eq %s \n", $1,$2);}
 		| PATH NEQ VALUE	{ printf("%s neq %s \n", $1,$2);}
 		| PATH G VALUE	{ printf("%s g %s \n", $1,$2);}
         | PATH L VALUE	{ printf("%s L %s \n", $1,$2);}
