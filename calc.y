@@ -8,16 +8,17 @@ int yylex(void);
 %}
 
 %union{
-  int		int_val;
-  string*	op_val;
+  string*		path;
+  string*	    value;
+  string*	    op_val;  
 }
 
 %start	input 
 
-%token	<int_val>	INTEGER_LITERAL
+%token	<path>	    PATH
 %type	<int_val>	exp
-%left	PLUS
-%left	MULT
+%left	EQ NEQ NL NG G L
+%left	and or
 
 %%
 
@@ -25,9 +26,12 @@ input:		/* empty */
 		| exp	{ cout << "Result: " << $1 << endl; }
 		;
 
-exp:		INTEGER_LITERAL	{ $$ = $1; }
-		| exp PLUS exp	{ $$ = $1 + $3; }
-		| exp MULT exp	{ $$ = $1 * $3; }
+exp:	PATH EQ VALUE	{ printf("%s eq %s \n", $1,$2);}
+		| PATH NEQ VALUE	{ printf("%s neq %s \n", $1,$2);}
+		| PATH G VALUE	{ printf("%s g %s \n", $1,$2);}
+        | PATH L VALUE	{ printf("%s L %s \n", $1,$2);}
+        | exp and exp	{ printf("%s and %s \n", $1,$2);}
+        | exp or exp	{ printf("%s or %s \n", $1,$2);}
 		;
 
 %%

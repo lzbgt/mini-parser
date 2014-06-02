@@ -7,17 +7,23 @@
 int yyerror(char *s);
 %}
 
-digit		[0-9]
-int_const	{digit}+
-
+path        \.{0,2}[-a-zA-Z0-9\_]+(\.{1,2}[-a-zA-Z0-9_]+)*
+value       (\"[- @\%\#\.\[\]\{\}\\\+\|\/\*\?\(\)a-zA-Z0-9\_]*\")
 %%
 
-{int_const}	{ yylval.int_val = atoi(yytext); return INTEGER_LITERAL; }
-"+"		{ yylval.op_val = new std::string(yytext); return PLUS; }
-"*"		{ yylval.op_val = new std::string(yytext); return MULT; }
+{path}	    { yylval.path = yytext; return PATH; }
+{value}	    { yylval.value = yytext; return VALUE; }
+"!="		{ yylval.op_val = new std::string(yytext); return NEQ; }
+"=="		{ yylval.op_val = new std::string(yytext); return EQ; }
+">="		{ yylval.op_val = new std::string(yytext); return NL; }
+"<="		{ yylval.op_val = new std::string(yytext); return NG; }
+">"		    { yylval.op_val = new std::string(yytext); return G; }
+"<"		    { yylval.op_val = new std::string(yytext); return L; }
+"and"		{ yylval.op_val = new std::string(yytext); return AND; }
+"or "		{ yylval.op_val = new std::string(yytext); return OR; }
 
 [ \t]*		{}
-[\n]		{ yylineno++;	}
+/* [\n]		{ yylineno++;	} */
 
 .		{ std::cerr << "SCANNER "; yyerror("abcde"); exit(1);	}
 
