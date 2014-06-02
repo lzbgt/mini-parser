@@ -20,5 +20,5 @@ int_const	{digit}+
 [ \t]*		{}
 [\n]		{ yylineno++;	}
 
-.		{ std::cerr << "SCANNER "; yyerror(""); exit(1);	}
+.		{ std::cerr << "SCANNER "; yyerror("abcde"); exit(1);	}
 
