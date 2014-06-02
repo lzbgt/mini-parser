@@ -12,7 +12,7 @@ int yylex(void);
   string*	    value;
   string*	    op_val;
   string*       space;
-  int           result
+  int           result;
 }
 
 %start	input 
