@@ -23,7 +23,7 @@ value       (\"[- @\%\#\.\[\]\{\}\\\+\|\/\*\?\(\)a-zA-Z0-9\_]*\")
 "or "		{ yylval.op_val = new std::string(yytext); return OR; }
 
 [ \t]*		{}
-/* [\n]		{ yylineno++;	} */
+[\n]		{ yylineno++;	}
 
 .		{ std::cerr << "SCANNER "; yyerror("abcde"); exit(1);	}
 
