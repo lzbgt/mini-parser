@@ -18,8 +18,8 @@ int yylex(void);
 %token	<path>	    PATH
 %token	<value>	    VALUE
 %type	<value>     exp
-%left	EQ NEQ NL NG G L
-%left	AND OR
+%left	<op_val> EQ NEQ NL NG G L
+%left	<op_val> AND OR
 
 %%
 
