@@ -17,8 +17,6 @@ int yylex(void);
 
 %token	<path>	    PATH
 %token	<value>	    VALUE
-%type	<path>	    PATH
-%type	<value>	    VALUE
 %left	EQ NEQ NL NG G L
 %left	and or
 
@@ -28,8 +26,7 @@ input:		/* empty */
 		| exp	{ cout << "Result: " << $1 << endl; }
 		;
 
-exp:	    PATH              { printf("%s \n", $1);}
-        |PATH EQ VALUE	  { printf("%s eq %s \n", $1,$2);}
+exp:    PATH EQ VALUE	  { printf("%s eq %s \n", $1,$2);}
 		| PATH NEQ VALUE  { printf("%s neq %s \n", $1,$2);}
 		| PATH G VALUE	  { printf("%s g %s \n", $1,$2);}
         | PATH L VALUE	  { printf("%s L %s \n", $1,$2);}
