@@ -10,13 +10,15 @@ int yylex(void);
 %union{
   string*		path;
   string*	    value;
-  string*	    op_val;  
+  string*	    op_val;
+  string*       space;
 }
 
 %start	input 
 
 %token	<path>	    PATH
 %token	<value>	    VALUE
+%token  <space>     SPACE
 %type	<value>     exp
 %left	<op_val> EQ NEQ NL NG G L
 %left	<op_val> AND OR
@@ -27,12 +29,12 @@ input:		/* empty */
 		| exp	{ cout << "Result: " << $1 << endl; }
 		;
 
-exp:    PATH EQ VALUE	  { printf("%s eq %s \n", $1,$2);}
-		| PATH NEQ VALUE  { printf("%s neq %s \n", $1,$2);}
-		| PATH G VALUE	  { printf("%s g %s \n", $1,$2);}
-        | PATH L VALUE	  { printf("%s L %s \n", $1,$2);}
-        | exp AND exp	  { printf("%s and %s \n", $1,$2);}
-        | exp OR exp	  { printf("%s or %s \n", $1,$2);}
+exp:    PATH SPACE EQ SPACE VALUE	  { cout<<$1<<" eq "<<$2;}
+		| PATH SPACE NEQ SPACE VALUE  { cout<<$1<<" eq "<<$2;}
+		| PATH SPACE G SPACE VALUE	  { cout<<$1<<" eq "<<$2;}
+        | PATH SPACE L SPACE VALUE	  { cout<<$1<<" eq "<<$2;}
+        | exp SPACE AND SPACE exp	  { cout<<$1<<" eq "<<$2;}
+        | exp SPACE OR SPACE exp	  { cout<<$1<<" eq "<<$2;}
 		;
 
 %%
