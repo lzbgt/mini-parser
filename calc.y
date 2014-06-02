@@ -8,10 +8,10 @@ int yylex(void);
 %}
 
 %union{
-  string*		path;
-  string*	    value;
-  string*	    op_val;
-  string*       space;
+  string		path;
+  string	    value;
+  string	    op_val;
+  string        space;
 }
 
 %start	input 
