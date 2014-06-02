@@ -19,7 +19,7 @@ int yylex(void);
 %token	<value>	    VALUE
 %token	<value>     exp
 %left	EQ NEQ NL NG G L
-%left	and or
+%left	AND OR
 
 %%
 
@@ -31,8 +31,8 @@ exp:    PATH EQ VALUE	  { printf("%s eq %s \n", $1,$2);}
 		| PATH NEQ VALUE  { printf("%s neq %s \n", $1,$2);}
 		| PATH G VALUE	  { printf("%s g %s \n", $1,$2);}
         | PATH L VALUE	  { printf("%s L %s \n", $1,$2);}
-        | exp and exp	  { printf("%s and %s \n", $1,$2);}
-        | exp or exp	  { printf("%s or %s \n", $1,$2);}
+        | exp AND exp	  { printf("%s and %s \n", $1,$2);}
+        | exp OR exp	  { printf("%s or %s \n", $1,$2);}
 		;
 
 %%
