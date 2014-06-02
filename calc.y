@@ -29,12 +29,12 @@ input:		/* empty */
 		| exp	{ cout << "Result: " << $1 << endl; }
 		;
 
-exp:    PATH SPACE EQ SPACE VALUE	  { cout<<$1<<" eq "<<$2;}
-		| PATH SPACE NEQ SPACE VALUE  { cout<<$1<<" eq "<<$2;}
-		| PATH SPACE G SPACE VALUE	  { cout<<$1<<" eq "<<$2;}
-        | PATH SPACE L SPACE VALUE	  { cout<<$1<<" eq "<<$2;}
-        | exp SPACE AND SPACE exp	  { cout<<$1<<" eq "<<$2;}
-        | exp SPACE OR SPACE exp	  { cout<<$1<<" eq "<<$2;}
+exp:    PATH SPACE EQ SPACE VALUE	  { $$ = $1+$2+$3+$4+$5;}
+		| PATH SPACE NEQ SPACE VALUE  { $$ = $1+$2+$3+$4+$5;}
+		| PATH SPACE G SPACE VALUE	  { $$ = $1+$2+$3+$4+$5;}
+        | PATH SPACE L SPACE VALUE	  { $$ = $1+$2+$3+$4+$5;}
+        | exp SPACE AND SPACE exp	  { $$ = $1+$2+$3+$4+$5;}
+        | exp SPACE OR SPACE exp	  { $$ = $1+$2+$3+$4+$5;}
 		;
 
 %%
