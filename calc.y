@@ -16,7 +16,7 @@ int yylex(void);
 %start	input 
 
 %token	<path>	    PATH
-%type	<int_val>	exp
+%type	<value>	    VALUE
 %left	EQ NEQ NL NG G L
 %left	and or
 
